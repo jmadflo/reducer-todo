@@ -9,7 +9,21 @@ export const listReducer = (state, action) => {
                         completed: false, 
                         id: Date.now()
                     }
-                ]})
+                ]
+            })
+        case 'TOGGLE_COMPLETED':
+            return({
+                todoList: state.todoList.map(todo => {
+                    if (todo.id === action.payload) {
+                        return {
+                            ...todo,
+                            completed: !todo.completed
+                        }
+                    }
+                    return todo
+                })
+
+            })
         default:
             return state
     }
