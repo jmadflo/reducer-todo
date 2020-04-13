@@ -1,6 +1,7 @@
 import React, {useReducer} from 'react'
 import { listReducer, initialState } from './reducers/listReducer'
 import TodoList from './components/TodoList'
+import AddTodoForm from './components/AddTodoForm'
 import './App.css'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
   return (
     <>
       <h1>Todo List App</h1>
+      <AddTodoForm dispatch={dispatch} />
       <TodoList state={state}/>
     </>
   )
