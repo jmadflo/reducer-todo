@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const listReducer = (state, action) => {
     switch(action.type){
         case 'ADD_TODO':
@@ -7,7 +9,8 @@ export const listReducer = (state, action) => {
                     {
                         item: action.payload, 
                         completed: false, 
-                        id: Date.now()
+                        id: Date.now(),
+                        timeCompleted: null
                     }
                 ]
             })
@@ -17,7 +20,8 @@ export const listReducer = (state, action) => {
                     if (todo.id === action.payload) {
                         return {
                             ...todo,
-                            completed: !todo.completed
+                            completed: !todo.completed,
+                            timeCompleted: todo.completed ? null : moment().format('HH:mm')
                         }
                     }
                     return todo
@@ -41,6 +45,7 @@ export const initialState = {
             item: 'Learn about reducers',
             completed: false,
             id: 3892987589,
+            timeCompleted: null
         }
     ], 
 }

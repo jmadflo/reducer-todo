@@ -8,6 +8,7 @@ const Todo = props => {
         >
             <h2>{props.todo.item}</h2>
             <p>Is completed? {props.todo.completed ? 'Yes' : 'No'}</p>
+            {props.todo.completed ? <p>Time Completed: {props.todo.timeCompleted}</p> : null}
         </div>
     )
 }
